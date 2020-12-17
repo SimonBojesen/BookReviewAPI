@@ -73,7 +73,7 @@ public class ReviewController {
     public ResponseEntity<AverageDTO> getAverageRatingFromISBN(@PathVariable String isbn){
         if (ISBNValidator.getInstance().isValidISBN13(isbn)) {
             try {
-                List<Review> reviews = reviewRepository.findAll();
+                List<Review> reviews = reviewRepository.findAllByIsbn13(isbn);
                 Double average = 0.0;
                 if(reviews.size() != 0) {
                     Double total = 0.0;
